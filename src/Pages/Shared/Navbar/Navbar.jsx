@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
-  const navbar = (
+  const navbarContainer = (
     <>
       <li className="ml-2 mb-2">
         <NavLink to="/">Home</NavLink>
@@ -52,13 +52,13 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow  text-black  bg-white rounded-box w-52"
             >
-              {navbar}
+              {navbarContainer}
             </ul>
           </div>
           <a className="btn btn-ghost text-xl">Boos Restaurant</a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{navbar}</ul>
+          <ul className="menu menu-horizontal px-1">{navbarContainer}</ul>
         </div>
         {/* <div className="navbar-end">
           <a className="btn">Button</a>
@@ -84,7 +84,9 @@ const Navbar = () => {
               <li>
                 <a className="justify-between">
                   Profile
-                  <span className="badge bg-green-600 text-white">New</span>
+                  <span className="badge bg-green-00 text-white bg-green-500">
+                    New
+                  </span>
                 </a>
               </li>
               <li>
