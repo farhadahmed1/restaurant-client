@@ -1,6 +1,11 @@
+import { Helmet } from "react-helmet-async";
+
 const Login = () => {
   return (
     <div>
+      <Helmet>
+        <title>Boss Restaurant || Login</title>
+      </Helmet>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left">

@@ -1,9 +1,16 @@
-import React from "react";
+import { Helmet } from "react-helmet-async";
+import Cover from "../Shared/Cover/Cover";
+
+import menuImg from "../../assets/menu/banner3.jpg";
 
 const Menu = () => {
   return (
     <div>
-      <h2> All the menu Here</h2>
+      <Helmet>
+        <title>Boss Restaurant || Menu</title>
+      </Helmet>
+
+      <Cover img={menuImg}></Cover>
     </div>
   );
 };
