@@ -1,18 +1,20 @@
-import { useEffect, useState } from "react";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import RecommendItem from "../../Shared/RecommendItem/RecommendItem";
+import useMenu from "../../../hooks/useMenu";
 
 const Recommends = () => {
-  const [recommend, setRecommend] = useState([]);
+  const [menu] = useMenu();
+  const recommend = menu.filter((item) => item.price <= 10);
+  // const [recommend, setRecommend] = useState([]);
 
-  useEffect(() => {
-    fetch(`menu.json`)
-      .then((res) => res.json())
-      .then((data) => {
-        const chefItems = data.filter((item) => item.price <= 10);
-        setRecommend(chefItems);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch(`menu.json`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       const chefItems = data.filter((item) => item.price <= 10);
+  //       setRecommend(chefItems);
+  //     });
+  // }, []);
 
   //console.log(recommend);
   return (

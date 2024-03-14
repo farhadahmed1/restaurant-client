@@ -4,9 +4,10 @@ import Main from "../Layout/Main";
 import Contact from "../Pages/Contact/Contact";
 import Login from "../Pages/Login/Login";
 import Dashboard from "../Pages/Dashboard/Dashboard";
-import Shop from "../Pages/Shop/Shop";
-import Menu from "../Pages/Menu/Menu";
+
 import Home from "./../Pages/Home/Home/Home";
+import Menu from "../Pages/Menu/Menu/Menu";
+import Order from "../Pages/Shop/Order/Order";
 
 const router = createBrowserRouter([
   {
@@ -28,8 +29,8 @@ const router = createBrowserRouter([
         element: <Dashboard />,
       },
       {
-        path: "/shop",
-        element: <Shop />,
+        path: "/order",
+        element: <Order />,
       },
       {
         path: "/menu",
