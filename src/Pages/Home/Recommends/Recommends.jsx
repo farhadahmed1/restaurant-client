@@ -24,7 +24,7 @@ const Recommends = () => {
         subheading="Should try"
       ></SectionTitle>
 
-      <div className="grid md:grid-cols-3 gap-6 my-2 mx-3">
+      <div className="grid md:grid-cols-3 gap-10 my-2 mx-3">
         {recommend.slice(0, 3).map((item) => (
           <RecommendItem key={item._id} item={item}></RecommendItem>
         ))}
