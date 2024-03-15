@@ -17,10 +17,10 @@ const Order = () => {
 
   console.log(category);
 
-  const desserts = menu.filter((item) => item.category === "dessert");
-  const soup = menu.filter((item) => item.category === "soup");
   const salad = menu.filter((item) => item.category === "salad");
   const pizza = menu.filter((item) => item.category === "pizza");
+  const soup = menu.filter((item) => item.category === "soup");
+  const dessert = menu.filter((item) => item.category === "dessert");
   const drinks = menu.filter((item) => item.category === "drinks");
   return (
     <div>
@@ -46,7 +46,7 @@ const Order = () => {
           <OrderTab items={soup}></OrderTab>
         </TabPanel>
         <TabPanel>
-          <OrderTab items={desserts}></OrderTab>
+          <OrderTab items={dessert}></OrderTab>
         </TabPanel>
         <TabPanel>
           <OrderTab items={drinks}></OrderTab>
