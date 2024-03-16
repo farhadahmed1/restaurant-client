@@ -39,9 +39,10 @@ const SignUp = () => {
                   {...register("name", { required: true })}
                   placeholder=" Enter your name"
                   className="input input-bordered"
-                  required
                 />
-                {errors.name && <span>This field is required</span>}
+                {errors.name && (
+                  <span className="text-red-600">This field is required</span>
+                )}
               </div>
               <div className="form-control">
                 <label className="label">
@@ -53,9 +54,10 @@ const SignUp = () => {
                   {...register("email", { required: true })}
                   placeholder=" Enter your email"
                   className="input input-bordered"
-                  required
                 />
-                {errors.email && <span>This field is required</span>}
+                {errors.email && (
+                  <span className="text-red-600">This field is required</span>
+                )}
               </div>
 
               <div className="form-control">
@@ -67,11 +69,33 @@ const SignUp = () => {
 
                   name="password"
                   type="password"
-                  {...register("password")}
+                  {...register("password", {
+                    required: true,
+                    minLength: 6,
+                    maxLength: 20,
+                    pattern:
+                      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{6,})/,
+                  })}
                   placeholder=" Enter your password"
                   className="input input-bordered"
-                  required
                 />
+                {errors.password?.type === "required" && (
+                  <p className="text-red-600">This field is required</p>
+                )}
+                {errors.password?.type === "minLength" && (
+                  <p className="text-red-600">Password must be 6 characters</p>
+                )}
+                {errors.password?.type === "maxLength" && (
+                  <p className="text-red-600">
+                    password must be less then 20 characters
+                  </p>
+                )}
+                {errors.password?.type === "pattern" && (
+                  <p className="text-red-600">
+                    Minimum Six characters, at least one letter, one number and
+                    one special character:
+                  </p>
+                )}
               </div>
 
               <div className="form-control mt-6">
