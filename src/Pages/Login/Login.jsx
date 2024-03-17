@@ -110,12 +110,14 @@ const Login = () => {
                   placeholder="type the text to display"
                   className="input input-bordered"
                   onBlur={handleValidateCaptcha}
-                  required
+                  //required
                 />
               </div>
               <div className="form-control mt-6">
                 <button
-                  disabled={disabled}
+                  // ToDo :apply re captcha
+                  //disabled={disabled}
+                  disabled={false}
                   className="btn btn-success text-white text-xl"
                 >
                   Login
