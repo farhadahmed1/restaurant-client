@@ -10,6 +10,7 @@ import Menu from "../Pages/Menu/Menu/Menu";
 import Order from "../Pages/Shop/Order/Order";
 
 import SignUp from "../Pages/SignUp/SignUp";
+import PrivateRoute from "./privateRoute";
 
 const router = createBrowserRouter([
   {
@@ -28,7 +29,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        element: <Dashboard />,
+        element: (
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        ),
       },
       // {
       //   path: "/order",

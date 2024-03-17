@@ -48,9 +48,7 @@ const Navbar = () => {
 
       {user ? (
         <li className="ml-2  mb-2">
-          <button className="btn btn-warning" onClick={handelLogOut}>
-            LogOut
-          </button>
+          <button onClick={handelLogOut}>LogOut</button>
         </li>
       ) : (
         <li className="ml-2  mb-2">

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
@@ -7,13 +7,17 @@ import {
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../../providers/AuthProviders";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
   //const captchaRef = useRef(null);
 
   const [disabled, setDisabled] = useState(true);
   const { singInUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const relocation = location.state?.from?.pathname || "/";
 
   useEffect(() => {
     loadCaptchaEnginge(6);
@@ -34,6 +38,7 @@ const Login = () => {
         showConfirmButton: false,
         timer: 1500,
       });
+      navigate(relocation, { replace: true });
     });
   };
 
@@ -115,7 +120,12 @@ const Login = () => {
                 >
                   Login
                 </button>
-                <Link to="/signup"> SignUp </Link>
+                <p className="text-center mt-2">
+                  Are you new user
+                  <Link to="/signup" className="text-green-500 ml-2">
+                    SignUp
+                  </Link>
+                </p>
               </div>
             </form>
           </div>
