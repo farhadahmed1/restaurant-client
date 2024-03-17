@@ -1,7 +1,9 @@
+import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-
+import { AuthContext } from "../../providers/AuthProviders";
+import Swal from "sweetalert2";
 const SignUp = () => {
   const {
     register,
@@ -9,8 +11,21 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
 
+  const { createUser } = useContext(AuthContext);
+
   const onSubmit = (data) => {
     console.log(data);
+    createUser(data.email, data.password).then((result) => {
+      const newUser = result.user;
+      console.log(newUser);
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Successfully Create Your Account",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    });
   };
   return (
     <div>

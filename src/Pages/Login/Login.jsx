@@ -2,10 +2,9 @@ import { useContext, useEffect, useRef, useState } from "react";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
-  LoadCanvasTemplateNoReload,
   validateCaptcha,
 } from "react-simple-captcha";
-
+import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../../providers/AuthProviders";
 import { Link } from "react-router-dom";
@@ -28,6 +27,13 @@ const Login = () => {
     console.log(password);
     singInUser(email, password).then((res) => {
       console.log(res);
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Successfully Login",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     });
   };
 
