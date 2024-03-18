@@ -1,6 +1,7 @@
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
-import RecommendItem from "../../Shared/RecommendItem/RecommendItem";
+
 import useMenu from "../../../hooks/useMenu";
+import FoodCard from "../../Shared/FoodCard/FoodCard";
 
 const Recommends = () => {
   const [menu] = useMenu();
@@ -26,7 +27,7 @@ const Recommends = () => {
 
       <div className="grid md:grid-cols-3 gap-10 my-2 mx-3">
         {recommend.slice(0, 3).map((item) => (
-          <RecommendItem key={item._id} item={item}></RecommendItem>
+          <FoodCard key={item._id} item={item}></FoodCard>
         ))}
       </div>
     </section>

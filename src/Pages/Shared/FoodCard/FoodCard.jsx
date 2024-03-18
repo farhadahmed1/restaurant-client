@@ -1,17 +1,40 @@
 import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
+import { axiosSecure } from "../../../hooks/useAxiosSecure";
+import useCart from "../../../hooks/useCart";
 
-const RecommendItem = ({ item }) => {
+const FoodCard = ({ item }) => {
   //console.log(item);
-  const { name, recipe, image, price } = item;
+  const { name, recipe, image, price, _id } = item;
   const { user } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
-  const handleAddToCart = (food) => {
+  const [, refetch] = useCart();
+  const handleAddToCart = () => {
     if (user && user.email) {
       // send cart data to database
-      console.log(food);
+      const cartItem = {
+        menuId: _id,
+        email: user.email,
+        name: name,
+        price: price,
+        image: image,
+      };
+      axiosSecure.post("/carts", cartItem).then((res) => {
+        //console.log(res.data);
+        if (res.data.insertedId) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: `${name} , added to cart`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          // refetch cart to update the  cate items list
+          refetch();
+        }
+      });
     } else {
       Swal.fire({
         title: "You are not Logged In",
@@ -55,4 +78,4 @@ const RecommendItem = ({ item }) => {
   );
 };
 
-export default RecommendItem;
+export default FoodCard;

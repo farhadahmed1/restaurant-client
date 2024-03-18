@@ -6,15 +6,17 @@ import { Navigation } from "swiper/modules";
 import { useEffect, useState } from "react";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
+import { axiosSecure } from "../../../hooks/useAxiosSecure";
 
 const Testimonials = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:4000/reviews`)
-      .then((res) => res.json())
-      .then((data) => {
-        setReviews(data);
+    axiosSecure("/reviews")
+      // fetch(`http://localhost:4000/reviews`)
+      //   .then((res) => res.json())
+      .then((res) => {
+        setReviews(res.data);
       });
   }, []);
 
