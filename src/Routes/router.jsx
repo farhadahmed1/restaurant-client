@@ -3,14 +3,13 @@ import Main from "../Layout/Main";
 
 import Contact from "../Pages/Contact/Contact";
 import Login from "../Pages/Login/Login";
-import Dashboard from "../Pages/Dashboard/Dashboard";
-
 import Home from "./../Pages/Home/Home/Home";
 import Menu from "../Pages/Menu/Menu/Menu";
 import Order from "../Pages/Shop/Order/Order";
-
 import SignUp from "../Pages/SignUp/SignUp";
 import PrivateRoute from "./privateRoute";
+import Dashboard from "../Layout/Dashboard/Dashboard";
+import Cart from "../Pages/Dashboard/Cart/Cart";
 
 const router = createBrowserRouter([
   {
@@ -25,18 +24,15 @@ const router = createBrowserRouter([
 
       {
         path: "/contact",
-        element: <Contact />,
-      },
-      {
-        path: "/dashboard",
         element: (
           <PrivateRoute>
-            <Dashboard />
+            <Contact />
           </PrivateRoute>
         ),
       },
+
       // {
-      //   path: "/order",
+      //   path: "/order/salad",
       //   element: <Order />,
       // },
       {
@@ -55,6 +51,16 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         element: <SignUp />,
+      },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: <Dashboard />,
+    children: [
+      {
+        path: "cart",
+        element: <Cart />,
       },
     ],
   },

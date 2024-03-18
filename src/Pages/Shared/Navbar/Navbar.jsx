@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProviders";
 import Swal from "sweetalert2";
 import useCart from "../../../hooks/useCart";
@@ -7,7 +7,9 @@ import useCart from "../../../hooks/useCart";
 const Navbar = () => {
   const { user, logOutUser } = useContext(AuthContext);
   const [cart] = useCart();
-  console.log(cart);
+  // console.log(cart);
+  const totalPrice = cart.reduce((total, item) => total + item.price, 0);
+  const roundPrice = Math.round(totalPrice).toFixed(2);
 
   const handelLogOut = () => {
     logOutUser()
@@ -34,17 +36,13 @@ const Navbar = () => {
         <NavLink to="/news">News</NavLink>
       </li>
       <li className="ml-2  mb-2">
-        <NavLink to="/dashboard">Dashboard</NavLink>
-      </li>
-
-      <li className="ml-2  mb-2">
         <NavLink to="/contact">Contact</NavLink>
       </li>
       <li className="ml-2  mb-2">
         <NavLink to="/menu">Our Menu </NavLink>
       </li>
       <li className="ml-2  mb-2">
-        <NavLink to="/order">Oder Food</NavLink>
+        <NavLink to="/order/salad">Oder Food</NavLink>
       </li>
       {/* <li className="ml-2  mb-2">
         <NavLink to="/login">Login</NavLink>
@@ -129,12 +127,14 @@ const Navbar = () => {
               tabIndex={0}
               className="mt-3 z-[1] card card-compact dropdown-content w-52 rounded-md bg-base-100 shadow"
             >
-              <div className="card-body">
-                <span className="font-bold text-lg">8 Items</span>
-                <span className="text-info">Subtotal: $999</span>
+              <div className="card-body text-center">
+                <span className="font-bold text-lg text-info">
+                  Items {cart.length}
+                </span>
+                <span className="text-info">Subtotal: ${roundPrice}</span>
                 <div className="card-actions">
                   <button className="btn btn-primary btn-block">
-                    View cart
+                    <Link to="/dashboard/cart"> View cart</Link>
                   </button>
                 </div>
               </div>
@@ -165,7 +165,11 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content mt-2 z-[1] p-2 shadow text-black  bg-white rounded-md w-52"
             >
-              <p className=" text-center"> {user?.displayName}</p>
+              <div className="text-center ">
+                <p className=" mt-2 uppercase">{user?.displayName}</p>
+                <small>{user?.email}</small>
+              </div>
+              <p className="divider divider-neutral mt-0 "></p>
               <li>
                 <a className="justify-between">
                   Profile
