@@ -6,10 +6,11 @@ import { Navigation } from "swiper/modules";
 import { useEffect, useState } from "react";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
-import { axiosSecure } from "../../../hooks/useAxiosSecure";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const Testimonials = () => {
   const [reviews, setReviews] = useState([]);
+  const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
     axiosSecure("/reviews")

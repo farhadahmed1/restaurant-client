@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import SocialLogin from "../../Components/SocialLogin/SocialLogin";
 const SignUp = () => {
   const {
     register,
@@ -36,6 +37,7 @@ const SignUp = () => {
 
           axiosPublic.post("/users", userInfo).then((res) => {
             if (res.data.insertedId) {
+              console.log(res.data.insertedId);
               reset();
               Swal.fire({
                 position: "center",
@@ -68,7 +70,7 @@ const SignUp = () => {
               et a id nisi.
             </p>
           </div>
-          <div className="card shrink-0 md:w-1/2 w-full max-w-sm shadow-2xl bg-base-100">
+          <div className="card shrink-0 md:w-1/2 w-full  rounded-t-2xl max-w-sm shadow-2xl bg-base-100">
             <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
               <div className="form-control">
                 <label className="label">
@@ -154,20 +156,23 @@ const SignUp = () => {
                 )}
               </div>
 
-              <div className="form-control mt-6">
+              <div className="form-control mt-6 ">
                 <input
                   type="submit"
                   className="btn btn-success text-white text-xl"
                   value=" Sign In"
                 />
+                <p className=" text-center m-2">
+                  Already have an account?{" "}
+                  <Link to="/login" className="text-green-500">
+                    Login
+                  </Link>
+                </p>
               </div>
-              <p className="text-center mt-2">
-                Already have an account?{" "}
-                <Link to="/login" className="text-green-500">
-                  Login
-                </Link>
-              </p>
             </form>
+            <div className="text-center ">
+              <SocialLogin></SocialLogin>
+            </div>
           </div>
         </div>
       </div>

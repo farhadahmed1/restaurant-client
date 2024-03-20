@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { axiosSecure } from "./useAxiosSecure";
+import useAxiosSecure from "./useAxiosSecure";
 
 const useMenu = () => {
   const [menu, setMenu] = useState([]);
   const [loading, setLoading] = useState(true);
+  const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
     axiosSecure(`/menu`)

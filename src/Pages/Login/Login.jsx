@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../../providers/AuthProviders";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import SocialLogin from "../../Components/SocialLogin/SocialLogin";
 
 const Login = () => {
   //const captchaRef = useRef(null);
@@ -67,7 +68,7 @@ const Login = () => {
               et a id nisi.
             </p>
           </div>
-          <div className="card shrink-0 md:w-1/2 w-full max-w-sm shadow-2xl bg-base-100">
+          <div className="card shrink-0 md:w-1/2 w-full rounded-t-2xl max-w-sm shadow-2xl bg-base-100">
             <form className="card-body" onSubmit={handleLogin}>
               <div className="form-control">
                 <label className="label">
@@ -122,7 +123,7 @@ const Login = () => {
                 >
                   Login
                 </button>
-                <p className="text-center mt-2">
+                <p className="m-2 text-center ">
                   Are you new user
                   <Link to="/signup" className="text-green-500 ml-2">
                     SignUp
@@ -130,6 +131,9 @@ const Login = () => {
                 </p>
               </div>
             </form>
+            <div className="text-center">
+              <SocialLogin></SocialLogin>
+            </div>
           </div>
         </div>
       </div>

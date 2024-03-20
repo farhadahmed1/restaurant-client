@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProviders";
 import Swal from "sweetalert2";
 import useCart from "../../../hooks/useCart";
+import { FaShoppingCart } from "react-icons/fa";
 
 const Navbar = () => {
   const { user, logOutUser } = useContext(AuthContext);
@@ -49,10 +50,11 @@ const Navbar = () => {
       </li> */}
 
       {user ? (
-        <li className="ml-2  mb-2">
-          <button onClick={handelLogOut}>LogOut</button>
-        </li>
+        ""
       ) : (
+        // <li className="ml-2  mb-2">
+        //   <button onClick={handelLogOut}>LogOut</button>
+        // </li>
         <li className="ml-2  mb-2">
           <NavLink to="/signup">Sign Up</NavLink>
         </li>
@@ -104,7 +106,8 @@ const Navbar = () => {
               className="btn btn-ghost btn-circle"
             >
               <div className="indicator">
-                <svg
+                <FaShoppingCart className="h-8 w-8"></FaShoppingCart>
+                {/* <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-8 w-8"
                   fill="none"
@@ -117,7 +120,7 @@ const Navbar = () => {
                     strokeWidth="2"
                     d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                   />
-                </svg>
+                </svg> */}
                 <span className="badge badge-sm indicator-item">
                   {cart.length}
                 </span>
@@ -182,7 +185,8 @@ const Navbar = () => {
                 <a>Settings</a>
               </li>
               <li>
-                <a>Logout</a>
+                <button onClick={handelLogOut}>LogOut</button>
+                {/* <a>Logout</a> */}
               </li>
             </ul>
           </div>
