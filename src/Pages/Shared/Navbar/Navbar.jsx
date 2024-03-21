@@ -168,7 +168,14 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content mt-2 z-[1] p-2 shadow text-black  bg-white rounded-md w-52"
             >
-              <div className="text-center ">
+              <div></div>
+              <div className=" text-center ">
+                <div className="flex  justify-center items-center">
+                  <img
+                    className="w-16 rounded-full -mt-8 "
+                    src={user?.photoURL}
+                  />
+                </div>
                 <p className=" mt-2 uppercase">{user?.displayName}</p>
                 <small>{user?.email}</small>
               </div>
@@ -185,8 +192,11 @@ const Navbar = () => {
                 <a>Settings</a>
               </li>
               <li>
-                <button onClick={handelLogOut}>LogOut</button>
-                {/* <a>Logout</a> */}
+                {user ? (
+                  <button onClick={handelLogOut}>LogOut</button>
+                ) : (
+                  <NavLink to="/signup">Sign Up</NavLink>
+                )}
               </li>
             </ul>
           </div>

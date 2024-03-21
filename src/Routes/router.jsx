@@ -10,6 +10,11 @@ import SignUp from "../Pages/SignUp/SignUp";
 import PrivateRoute from "./privateRoute";
 import Dashboard from "../Layout/Dashboard/Dashboard";
 import Cart from "../Pages/Dashboard/Cart/Cart";
+import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
+import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
+import AddItems from "../Pages/Dashboard/AddItems/AddItems";
+import ManageItems from "../Pages/Dashboard/ManageItems/ManageItems";
+import ManageBooking from "../Pages/Dashboard/ManageBooking/ManageBooking";
 
 const router = createBrowserRouter([
   {
@@ -56,11 +61,36 @@ const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Dashboard />,
+    element: (
+      <PrivateRoute>
+        <Dashboard />
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "cart",
         element: <Cart />,
+      },
+      {
+        path: "users",
+        element: <AllUsers />,
+      },
+
+      {
+        path: "adminHome",
+        element: <AdminHome />,
+      },
+      {
+        path: "addItems",
+        element: <AddItems />,
+      },
+      {
+        path: "manageItems",
+        element: <ManageItems />,
+      },
+      {
+        path: "manageBooking",
+        element: <ManageBooking />,
       },
     ],
   },

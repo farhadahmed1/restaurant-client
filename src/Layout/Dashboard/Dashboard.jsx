@@ -2,6 +2,7 @@ import { NavLink, Outlet } from "react-router-dom";
 import {
   FaAd,
   FaCalendar,
+  FaChartLine,
   FaHome,
   FaList,
   FaPaypal,
@@ -9,6 +10,8 @@ import {
   FaSearch,
   FaShoppingBag,
   FaShoppingCart,
+  FaUsers,
+  FaUtensils,
 } from "react-icons/fa";
 
 const Dashboard = () => {
@@ -28,27 +31,27 @@ const Dashboard = () => {
               </li>
               <li className="mb-2">
                 <NavLink to="/dashboard/addItems">
-                  <FaCalendar></FaCalendar>Add Items
+                  <FaUtensils></FaUtensils> Add Items
                 </NavLink>
               </li>
               <li className="mb-2">
                 <NavLink to="/dashboard/manageItems">
-                  <FaPaypal></FaPaypal>Manage Items
+                  <FaList></FaList> Manage Items
                 </NavLink>
               </li>
               <li className="mb-2">
                 <NavLink to="/dashboard/manageBooking">
-                  <FaShoppingCart></FaShoppingCart>Manage Booking
+                  <FaAd></FaAd> Manage Booking
                 </NavLink>
               </li>
               <li className="mb-2">
-                <NavLink to="/dashboard/allUsers">
-                  <FaAd></FaAd>All Users
+                <NavLink to="/dashboard/users">
+                  <FaUsers></FaUsers> All Users
                 </NavLink>
               </li>
               <li className="mb-2">
-                <NavLink to="/dashboard/booking">
-                  <FaList></FaList>
+                <NavLink to="/dashboard/chart">
+                  <FaChartLine></FaChartLine> All Analysis
                 </NavLink>
               </li>
               <div className="divider divider-neutral  "></div>
