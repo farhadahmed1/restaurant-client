@@ -13,11 +13,13 @@ import {
   FaUsers,
   FaUtensils,
 } from "react-icons/fa";
+import useAdmin from "../../hooks/useAdmin";
 
 const Dashboard = () => {
   // TODO: get Admin value from the data base
 
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
+  // const isAdmin = true;
   return (
     <div className="flex">
       <div className="w-64 min-h-screen bg-orange-400">
