@@ -52,8 +52,8 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li className="mb-2">
-                <NavLink to="/dashboard/chart">
-                  <FaChartLine></FaChartLine> All Analysis
+                <NavLink to="/dashboard/analysis">
+                  <FaChartLine></FaChartLine>Analysis
                 </NavLink>
               </li>
               <div className="divider divider-neutral  "></div>
