@@ -73,22 +73,22 @@ const ManageItems = () => {
                     </td>
                     <td>{item.name}</td>
                     <td> ${item.price}</td>
-                    <th>
+                    <td>
                       <button
                         className="btn btn-ghost btn-lg bg-orange-400"
                         onClick=""
                       >
                         <FaEdit className="text-white"></FaEdit>
                       </button>
-                    </th>
-                    <th>
+                    </td>
+                    <td>
                       <button
                         className="btn btn-ghost btn-lg bg-gray-300"
                         onClick={() => handleDelete(item._id)}
                       >
                         <FaTrashAlt className="text-red-500"></FaTrashAlt>
                       </button>
-                    </th>
+                    </td>
                   </tr>
                 );
               })}
