@@ -1,35 +1,40 @@
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import useMenu from "../../../hooks/useMenu";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const ManageItems = () => {
-  const [menu] = useMenu();
-  const handleDelete = (id) => {
-    console.log(id);
-    // Swal.fire({
-    //   title: "Are you sure?",
-    //   text: "You won't be able to revert this!",
-    //   icon: "warning",
-    //   showCancelButton: true,
-    //   confirmButtonColor: "#3085d6",
-    //   cancelButtonColor: "#d33",
-    //   confirmButtonText: "Yes, delete it!",
-    // }).then((result) => {
-    //   if (result.isConfirmed) {
-    //     axiosSecure.delete(`/carts/${id}`).then((res) => {
-    //       if (res.data.deletedCount > 0) {
-    //         refetch();
-    //         Swal.fire({
-    //           title: "Deleted!",
-    //           text: "Your file has been deleted.",
-    //           icon: "success",
-    //           showConfirmButton: false,
-    //           timer: 1000,
-    //         });
-    //       }
-    //     });
-    //   }
-    // });
+  const [menu, , refetch] = useMenu();
+  const axiosSecure = useAxiosSecure();
+  // const { refetch } = useQuery();
+  const handleDeleteMenu = (item) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        await axiosSecure.delete(`/menu/${item._id}`).then((res) => {
+          console.log(res.data);
+          if (res.data.deletedCount > 0) {
+            refetch();
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+              showConfirmButton: false,
+              timer: 1000,
+            });
+          }
+        });
+      }
+    });
   };
 
   return (
@@ -57,8 +62,9 @@ const ManageItems = () => {
             </thead>
             <tbody>
               {menu.map((item, index) => {
+                console.log();
                 return (
-                  <tr key={index}>
+                  <tr key={item._id}>
                     <th>{index + 1}</th>
                     <td>
                       <div className="flex items-center gap-3">
@@ -74,17 +80,16 @@ const ManageItems = () => {
                     <td>{item.name}</td>
                     <td> ${item.price}</td>
                     <td>
-                      <button
-                        className="btn btn-ghost btn-lg bg-orange-400"
-                        onClick=""
-                      >
-                        <FaEdit className="text-white"></FaEdit>
-                      </button>
+                      <Link to={`/dashboard/updateItem/${item._id}`}>
+                        <button className="btn btn-ghost btn-lg bg-orange-400">
+                          <FaEdit className="text-white"></FaEdit>
+                        </button>
+                      </Link>
                     </td>
                     <td>
                       <button
-                        className="btn btn-ghost btn-lg bg-gray-300"
-                        onClick={() => handleDelete(item._id)}
+                        className="btn btn-ghost btn-lg bg-gray-200"
+                        onClick={() => handleDeleteMenu(item)}
                       >
                         <FaTrashAlt className="text-red-500"></FaTrashAlt>
                       </button>
