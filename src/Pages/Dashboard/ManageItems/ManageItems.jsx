@@ -10,6 +10,7 @@ const ManageItems = () => {
   const axiosSecure = useAxiosSecure();
   // const { refetch } = useQuery();
   const handleDeleteMenu = (item) => {
+    console.log(item._id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -19,6 +20,7 @@ const ManageItems = () => {
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
     }).then(async (result) => {
+      console.log(result);
       if (result.isConfirmed) {
         await axiosSecure.delete(`/menu/${item._id}`).then((res) => {
           console.log(res.data);

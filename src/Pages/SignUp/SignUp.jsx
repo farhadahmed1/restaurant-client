@@ -127,6 +127,7 @@ const SignUp = () => {
 
                   name="password"
                   type="password"
+                  autoComplete="on"
                   {...register("password", {
                     required: true,
                     minLength: 6,

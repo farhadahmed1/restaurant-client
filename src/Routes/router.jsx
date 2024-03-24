@@ -18,6 +18,7 @@ import ManageBooking from "../Pages/Dashboard/ManageBooking/ManageBooking";
 import AdminRoute from "./AdminRoute";
 import Analysis from "../Pages/Dashboard/Analysis/Analysis";
 import UpdateItem from "../Pages/Dashboard/UpdateItem/UpdateItem";
+import Payment from "../Pages/Dashboard/Payment/Payment";
 
 const router = createBrowserRouter([
   {
@@ -125,6 +126,11 @@ const router = createBrowserRouter([
             <Analysis />
           </AdminRoute>
         ),
+      },
+
+      {
+        path: "payment",
+        element: <Payment></Payment>,
       },
       {
         path: "updateItem/:id",
